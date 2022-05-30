@@ -15,7 +15,7 @@ function App() {
 	return (
 		<div className='App'>
 			<Helmet>
-				<title>My Title</title>
+				<title>Beach Game</title>
 				<script src='https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js'></script>
 			</Helmet>
 			<a-scene inspector-plugin-recast>
