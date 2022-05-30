@@ -21,7 +21,7 @@ function App() {
 			<a-scene inspector-plugin-recast>
 				<Island />
 				<Campfire />
-
+				<Airplane />
 				<ComputerGroup1 />
 				<ComputerGroup2 />
 				<ComputerGroup3 />
