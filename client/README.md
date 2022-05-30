@@ -13,3 +13,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 - Table by Darwin Yamamoto [CC-BY], via Poly Pizza
 - Airplane by Poly by Google [CC-BY], via Poly Pizza
 - Ocean by Poly by Google [CC-BY], via Poly Pizza
+- Boulder by Poly by Google [CC-BY], via Poly Pizza

@@ -1,8 +1,11 @@
 import 'aframe'
+import { Helmet } from 'react-helmet'
 import {
 	Campfire,
 	Island,
-	ComputerGroup,
+	ComputerGroup1,
+	ComputerGroup2,
+	ComputerGroup3,
 	Ocean,
 } from './Components/aframe/models/index.js'
 import './App.css'
@@ -10,13 +13,19 @@ import './App.css'
 function App() {
 	return (
 		<div className="App">
-			<a-scene>
-				<a-entity position="0 0 0">
-					<Island />
-					<Campfire />
-					<ComputerGroup />
-					<Ocean />
-				</a-entity>
+			<Helmet>
+				<title>My Title</title>
+				<script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+			</Helmet>
+			<a-scene inspector-plugin-recast>
+				<Island />
+				<Campfire />
+
+				<ComputerGroup1 />
+				<ComputerGroup2 />
+				<ComputerGroup3 />
+
+				<Ocean />
 			</a-scene>
 		</div>
 	)
