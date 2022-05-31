@@ -3,7 +3,7 @@ import Table from '../Table/Table.js'
 
 const ComputerGroup1 = () => {
 	return (
-		<a-entity position="7.214 0 -7.964" rotation="0 138.271 0">
+		<a-entity position='7.214 -0.867 -7.964' rotation='0 138.271 0'>
 			<Computer />
 			<Table />
 		</a-entity>
