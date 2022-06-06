@@ -1,1 +1,6 @@
 __pycache__
+.fseventsd
+.Trashes
+.vscode
+boot_out.txt
+lib

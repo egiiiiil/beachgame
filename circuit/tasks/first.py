@@ -1,4 +1,4 @@
-def first_task():
+def first_task(phrase):
     def alphabet(letter):
         return {
             'a': '.-',
@@ -30,8 +30,7 @@ def first_task():
             ' ': ''
         }.get(letter, '')
 
-    get_letter = "i like horses"
-    no_space = get_letter.replace(' ', '')
+    get_letter = phrase
     morse_letter = ''
 
     for letter in get_letter:
