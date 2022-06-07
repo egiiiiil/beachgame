@@ -7,31 +7,23 @@
 		<title>Document</title>
 		<script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-		<script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
-
-		<!-- <script>
-			const play = () => {
-				window.removeEventListener('click', play)
-				window.removeEventListener('touchstart', play)
-				document.querySelectorAll('video, audio').forEach((el) => el.play())
-				document
-					.querySelectorAll('[sound],a-sound')
-					.forEach((el) => el.components.sound.playSound())
-			}
-			window.addEventListener('click', play)
-			window.addEventListener('touchstart', play)
-		</script> -->
+		<!-- <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script> -->
+		<script src="./index.js"></script>
 	</head>
 	<body>
-		<a-scene inspector-plugin-recast>
+		<!-- <a-scene inspector-plugin-recast> -->
+		<a-scene cursor="rayOrigin: mouse">
 			<a-asset-item id="nav-mesh" src="./navmesh/navmesh.gltf"></a-asset-item>
-
+			<a-assets>
+				<img id="morse-paper" src="./img/morse.png" />
+			</a-assets>
 			<a-entity movement-controls="speed: 0.4; constrainToNavMesh: true">
 				<a-entity
 					camera
 					position="0 1.6 0"
 					look-controls="pointerLockEnabled: true"
-				></a-entity
+				>
+					<a-cursor></a-cursor> </a-entity
 			></a-entity>
 
 			<a-entity visible="false" gltf-model="#nav-mesh" nav-mesh></a-entity>
@@ -41,78 +33,139 @@
 			#9cf0ff
 			"
 			></a-sky>
-			<a-entity>
-				<a-gltf-model
-					src="./models/Island.glb"
-					animation-mixer="clip: *;"
-					shadow
-				></a-gltf-model>
-				<a-gltf-model
-					src="./models/Campfire.glb"
-					animation-mixer="clip: *;"
-					shadow
-					position="0 0 -4"
-				></a-gltf-model>
 
-				<a-cylinder
-					sound="src: #beep; volume: 1; maxDistance: 1"
-					position="0 -1.093 9.696"
-					color="#020202"
-					height="0.100"
-					radius="0.250"
-				></a-cylinder>
+			<a-gltf-model
+				src="../src/models/Island.glb"
+				animation-mixer="clip: *;"
+				shadow
+			></a-gltf-model>
+			<a-gltf-model
+				src="./models/Campfire.glb"
+				animation-mixer="clip: *;"
+				shadow
+				position="0 0 -4"
+			></a-gltf-model>
 
-				<a-entity position="7.214 -0.867 -7.964" rotation="0 138.271 0">
-					<a-gltf-model
-						src="./models/Computer.glb"
-						animation-mixer="clip: *;"
-						position="0.038 0.822 -0.317"
-						rotation="7 4 -4"
-						scale="3 3 3"
-						shadow
-					></a-gltf-model>
-					<a-gltf-model
-						src="./models/Table.glb"
-						animation-mixer="clip: *;"
-						position="0 0.313 0"
-						scale="2 0.890 2"
-						shadow
-					></a-gltf-model>
+			<a-cylinder
+				sound="src: #beep; volume: 1; maxDistance: 1"
+				position="0 -1.093 9.696"
+				color="#020202"
+				height="0.100"
+				radius="0.250"
+			></a-cylinder>
+
+			<a-entity position="7.214 -0.867 -7.964" rotation="0 138.271 0">
+				<a-box
+					color="red"
+					position="1.170 0.831 -0.409"
+					scale="0.2 0.2 0.2"
+					id="updatecomp1State"
+					onclick="stateUpdater1()"
+				></a-box>
+				<a-entity
+					position="0 1.330 -0.241"
+					color="#4CC3D9"
+					cursor-listener
+					animation__mouseenter="property: visible; startEvents: mouseenter; to: false"
+					animation__mouseleave="property: visible; startEvents: mouseleave; to: true"
+				>
+					<a-text
+						value="Start computer 1"
+						position="0 0 0"
+						rotation="0 180 0"
+						color="white"
+						align="center"
+					></a-text>
 				</a-entity>
-				<a-entity position="-11.178 -0.592 -3.973" rotation="0 -109.284 0">
-					<a-gltf-model
-						src="./models/Computer.glb"
-						animation-mixer="clip: *;"
-						position="0.038 0.822 -0.317"
-						rotation="7 4 -4"
-						scale="3 3 3"
-						shadow
-					></a-gltf-model>
-					<a-gltf-model
-						src="./models/Table.glb"
-						animation-mixer="clip: *;"
-						position="0 0.313 0"
-						scale="2 0.890 2"
-						shadow
-					></a-gltf-model>
-				</a-entity>
-
 				<a-gltf-model
-					src="./models/Airplane.glb"
+					src="./models/Computer.glb"
 					animation-mixer="clip: *;"
+					position="0.038 0.822 -0.317"
+					rotation="7 4 -4"
+					scale="3 3 3"
 					shadow
-					scale="0.1 0.1 0.1"
-					position="133.734 0.458 -168.916"
-					rotation="45.354 -12.401 -32.174"
 				></a-gltf-model>
 				<a-gltf-model
-					src="./models/Ocean.glb"
-					animation="property: object3D.position.y; to: -11.822; dir: alternate; dur: 2000; loop: true"
-					position="0 -14.673 0"
-					scale="1 0.200 1"
+					src="./models/Table.glb"
+					animation-mixer="clip: *;"
+					position="0 0.313 0"
+					scale="2 0.890 2"
 					shadow
 				></a-gltf-model>
 			</a-entity>
+
+			<a-entity position="-11.178 -0.592 -3.973" rotation="0 -109.284 0">
+				<a-box
+					color="red"
+					position="1.170 0.831 -0.409"
+					scale="0.2 0.2 0.2"
+					id="updatecomp2State"
+					stateUpdator
+					onclick="stateUpdater2()"
+				></a-box>
+				<a-entity
+					position="0 1.330 -0.241"
+					color="#4CC3D9"
+					cursor-listener
+					animation__mouseenter="property: visible; startEvents: mouseenter; to: false"
+					animation__mouseleave="property: visible; startEvents: mouseleave; to: true"
+				>
+					<a-text
+						value="Start computer 2"
+						position="0 0 0"
+						rotation="0 180 0"
+						color="white"
+						align="center"
+					></a-text>
+				</a-entity>
+				<a-gltf-model
+					src="./models/Computer.glb"
+					animation-mixer="clip: *;"
+					position="0.038 0.822 -0.317"
+					rotation="7 4 -4"
+					scale="3 3 3"
+					shadow
+				></a-gltf-model>
+
+				<a-gltf-model
+					src="./models/Table.glb"
+					animation-mixer="clip: *;"
+					position="0 0.313 0"
+					scale="2 0.890 2"
+					shadow
+				></a-gltf-model>
+				<a-plane
+					position="-1.417 0.703 0.035"
+					rotation="-90 164.549 0"
+					width="1"
+					height="1.4142"
+					shadow
+					material="src: #morse-paper"
+				></a-plane>
+			</a-entity>
+
+			<a-gltf-model
+				src="./models/Airplane.glb"
+				animation-mixer="clip: *;"
+				shadow
+				scale="0.1 0.1 0.1"
+				position="133.734 0.458 -168.916"
+				rotation="45.354 -12.401 -32.174"
+			></a-gltf-model>
+			<a-gltf-model
+				src="./models/Ocean.glb"
+				animation="property: object3D.position.y; to: -11.822; dir: alternate; dur: 2000; loop: true"
+				position="0 -14.673 0"
+				scale="1 0.200 1"
+				shadow
+			></a-gltf-model>
+
+			<a-gltf-model
+				src="./models/Clouds2.glb"
+				position="0 200 0"
+				scale="120 120 120"
+				shadow
+			></a-gltf-model>
 		</a-scene>
 	</body>
 </html>
